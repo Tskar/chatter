@@ -1,0 +1,101 @@
+.navbar {
+
+    flex: 2;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 1rem 0 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .app-title {
+        font-weight: bold;
+        padding-left: .5rem;
+        width: 70%;
+    }
+
+    .control-panel {
+        display: flex;
+        flex-direction: row-reverse;
+        width: 30%;
+        gap: .5rem .5rem;
+        padding-right: .5rem;
+    
+        .sign-out {
+            
+            border-radius: 50%;
+            height: 1.5rem;
+            width: 1.5rem;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: var(--text-color);
+        }
+
+        .theme-selector {
+            background-color: transparent;
+            height: 1.5rem;
+            width: 1.5rem;
+            color: var(--text-color);
+
+        }
+    
+    }
+}
+
+
+/* For tablets and smaller screens */
+@media (max-width: 768px) {
+    .navbar {
+        .control-panel {
+            flex-wrap: wrap;
+            width: 10%;
+
+        }
+    }
+  }
+  
+  /* For mobile phones */
+  @media (max-width: 480px) {
+    .navbar {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        border-radius: 0;
+        background-color: transparent;
+
+        .app-title {
+            font-weight: bold;
+            padding-left: .5rem;
+            width: 60%;
+        }
+        
+        .control-panel {
+            display: flex;
+            flex-wrap: wrap;
+            width: 40%;
+            gap: .5rem .5rem;
+            padding-right: .5rem;
+            
+            .sign-out {
+                
+                border-radius: 50%;
+                height: 1.5rem;
+                width: 1.5rem;
+                
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+                color:white;
+            }
+            
+            .theme-selector {
+                
+            }
+        }
+    }
+  }
