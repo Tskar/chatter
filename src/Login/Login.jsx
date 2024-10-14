@@ -9,8 +9,12 @@ import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 const Login = (props) => {
 
     const [user, setUser] = useState(null);
+    const [error, setError] = useState(false);
+
     const auth = getAuth(app);
     const googleLogin = () => {
+
+        setError(false);
         const provider = new GoogleAuthProvider();
         provider.addScope("https://www.googleapis.com/auth/userinfo.profile");
 
@@ -21,12 +25,14 @@ const Login = (props) => {
 
         signInWithPopup(auth,provider).then((result)=> {
             setUser(result.user);            
-        });
+        })
+        .catch((error) => { setError(true);});
     }
 
     const signOut = async () => {
         await auth.signOut();
         setUser(null);
+        setError(false);
     }
 
   return (
@@ -37,6 +43,8 @@ const Login = (props) => {
 
         {/*Testing signOut and user persistence. Will be moved to app canvas. */}
         {user && <button className="sign-in" onClick={signOut}>Sign Out</button>}
+
+        {error && <span> Oops! Try again.</span>}
       </div>
       
     </div>
