@@ -14,6 +14,11 @@ const Login = (props) => {
         const provider = new GoogleAuthProvider();
         provider.addScope("https://www.googleapis.com/auth/userinfo.profile");
 
+        /* Prevent google to auto-sign and allow user to pick their account.*/
+        provider.setCustomParameters({
+            prompt: "select_account",
+        });
+
         signInWithPopup(auth,provider).then((result)=> {
             setUser(result.user);            
         });
