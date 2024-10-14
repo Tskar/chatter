@@ -1,0 +1,38 @@
+.login {
+    height: 25rem;
+    width: 20rem;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 4px 14px -3px;
+    background-color: var(--home-color);
+    color: var(--text-color);
+
+    img {
+        width: 10rem;
+        height: 10rem;
+        display: inline-block;
+        line-height: 1em;
+        flex-shrink: 0;
+        vertical-align: middle;
+        border-radius: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .sign-in {
+        text-align: center;
+        font-weight: 500;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        height: 3rem;
+        width: 12rem;
+        background-color: var(--button-color);
+        color: var(--text-color);
+        border-radius: 10px;
+        border: none;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+}
