@@ -1,15 +1,26 @@
-import React from "react"
+import React, { useRef, useEffect } from "react"
 import './chat.css'
-import tempImg from '../../Images/App-logo.png'
+import { useAuth } from "../../Context/AuthContext";
+import { useChatAuth } from "../../Context/ChatContext";
 
-const Chat = (props) => {
+
+const Chat = ({message}) => {
+
+  const { currentUser } = useAuth();
+  const { data } = useChatAuth();
+  const ref = useRef();
+
+  useEffect(() => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  }, [message]);
+
   return (
-    <div className="chat owner">
+    <div className={`chat ${message.senderId === currentUser.uid && "owner"}`}>
         <div className="chat-sender">
-            <img src={tempImg} alt=""></img>
+            <img src={message.senderId === currentUser.uid ? currentUser.photoURL: data.user.photoURL} alt=""></img>
         </div>
         <div className="chat-value">
-            <p>This is the chat value.</p>
+            <p>{message.text}</p>
         </div>
     </div>
   )
