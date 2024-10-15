@@ -63,7 +63,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: var(--notifications-background);
         padding: 1rem 1rem;
         color: #5E5E5E;
         margin: 0 .2rem;
