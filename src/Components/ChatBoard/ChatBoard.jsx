@@ -24,9 +24,9 @@ const ChatBoard = (props) => {
 
   return (
     <div className="chatboard">
-      {messages.map((m) => (
-        <Chat message={m} key={m.id} />
-      ))}
+      {messages.slice(0).reverse().map((m) => (
+    <Chat message={m} key={m.id} />
+  ))}
     </div>
   )
 };
