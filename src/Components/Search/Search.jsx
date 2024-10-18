@@ -5,8 +5,7 @@ import { db } from '../../Firebase/firebase';
 import { collection, query, where, getDocs, setDoc, doc, updateDoc, serverTimestamp, getDoc } from "firebase/firestore";
 
 
-const Search = (props) => {
-  
+const Search = (props) => {  
 
   const[ user, setUser ] = useState(null);
   const [ username, setUsername ] = useState("");
@@ -75,7 +74,6 @@ const Search = (props) => {
     setUser(null);
     setUsername("")
   };
-
 
   return (
     <div className="search">

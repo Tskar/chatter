@@ -1,6 +1,7 @@
 .canvas {
     height: 70vh;
-    width: 80vw;
+    width: 70vw;
+    max-width: 1000px;
     background-color: var(--home-color);
     color: var(--text-color);
     box-shadow: var(--div-shadow);
