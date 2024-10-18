@@ -4,7 +4,7 @@ import Applogo from '../Images/App-logo.png'
 
 import { db, auth } from "../Firebase/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 
 const Login = (props) => {
 
@@ -35,17 +35,24 @@ const Login = (props) => {
         
         // Reference Firestore document with the user's UID
         const userRef = doc(db, "users", user.uid); //Firestore instance
-    
-        // Set user data in Firestore
-        await setDoc(userRef, {
-          uid: user.uid,
-          displayName: user.displayName,
-          email: user.email,
-          photoURL: user.photoURL,
-          createdAt: new Date(),
-        });
-    
-        console.log("User successfully created in Firestore");
+
+        // Check if the user document already exists
+        const docSnap = await getDoc(userRef);
+        
+        if (!docSnap.exists()) {
+
+          // Set user data in Firestore
+          await setDoc(userRef, {
+            uid: user.uid,
+            displayName: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL,
+            createdAt: new Date(),
+          });
+          console.log("User successfully created in Firestore");
+        } else {
+          console.log("User already exists");
+        }
       } catch (error) {
         console.error("Error creating user in Firestore:", error);
       }
@@ -57,9 +64,14 @@ const Login = (props) => {
 
         const userInboxRef = doc(db, "userInbox", user.uid);
         
-        await setDoc (userInboxRef, {});
+        const docSnap = await getDoc(userInboxRef);
         
-        console.log("UserInbox successfully created in Firestore");
+        if (!docSnap.exists()) {
+          await setDoc (userInboxRef, {});
+          console.log("UserInbox successfully created in Firestore");
+        } else {
+          console.log("User inbox exists.")
+        }
       } catch (error) {
         console.error("Error creating userInbox in Firestore:", error);
       }
