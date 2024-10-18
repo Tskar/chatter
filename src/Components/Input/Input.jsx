@@ -59,7 +59,7 @@ const Input = (props) => {
     } catch (error) {
       console.error("Error updating msg:", error);
     }
-    
+    setText("");
   }
 
   return (
