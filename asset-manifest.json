@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/chatter/static/css/main.8724915d.css",
+    "main.js": "/chatter/static/js/main.59d2f599.js",
+    "static/js/453.e09f672b.chunk.js": "/chatter/static/js/453.e09f672b.chunk.js",
+    "static/media/App-logo.png": "/chatter/static/media/App-logo.a5077ba0b35cf443f807.png",
+    "index.html": "/chatter/index.html",
+    "main.8724915d.css.map": "/chatter/static/css/main.8724915d.css.map",
+    "main.59d2f599.js.map": "/chatter/static/js/main.59d2f599.js.map",
+    "453.e09f672b.chunk.js.map": "/chatter/static/js/453.e09f672b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8724915d.css",
+    "static/js/main.59d2f599.js"
+  ]
+}
