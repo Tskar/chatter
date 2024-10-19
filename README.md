@@ -41,7 +41,7 @@ Now clone this repo in your local device.
 
 Sanskar Thapa - [@sanskarthapa7](https://www.instagram.com/sanskarthapa7/) - sanskarthapaofficial@gmail.com
 
-Project Link: [https://github.com/Tskar/project-blog](https://github.com/Tskar/project-blog)
+Project Link: [https://github.com/Tskar/project-blog](https://github.com/Tskar/chatter)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
