@@ -7,33 +7,40 @@ import { collection, query, where, getDocs, setDoc, doc, updateDoc, serverTimest
 
 const Search = (props) => {  
 
-  const[ user, setUser ] = useState(null);
+  const[ user, setUser ] = useState([]);
   const [ username, setUsername ] = useState("");
   const [ error, setError ] = useState(false);
 
   const { currentUser } = useAuth();
 
   const handleSearch = async() => {
-    const qry = query(collection(db, "users"), where("displayName", "==", username));
+
+    if(username === "") {setUser([]); setError(false); return;}
+
+    const qry = query(collection(db, "users"), where("lowercaseUName", ">=", username.toLowerCase()),
+    where("lowercaseUName", "<=", username.toLowerCase() + '\uf8ff'));
 
     try {
       const querySnapshot = await getDocs(qry);
       
       if (querySnapshot.size === 0) {
         setError(true);
-        setUser(null);
+        setUser([]);
       } else {
         setError(false);
+        const usersArray = [];
+
         querySnapshot.forEach((doc) => {
-          setUser(doc.data());
-          console.log("Doc.data: ", doc.data());
+          usersArray.push(doc.data());
         });
+        setUser(usersArray);
+        console.log("users: ", usersArray);
       }
     } catch (error) {console.log(error); setError(true)};
   };
 
   const handleKey = (e) => {
-    e.code === "Enter" && handleSearch();
+    e.keyCode === 13 && handleSearch() ;
   }
 
   const handleResult = async () => {
@@ -71,7 +78,7 @@ const Search = (props) => {
         });
       }
     } catch (err) {}
-    setUser(null);
+    setUser([]);
     setUsername("")
   };
 
@@ -80,19 +87,21 @@ const Search = (props) => {
       <div className="search-box">
         <input type="text" 
           className="search-user-field" 
-          placeholder="Look up friends.." 
-          onKeyDown={handleKey} 
+          placeholder="Look up friends.."
+          onKeyDown={handleKey}
+          enterKeyHint="enter"
           onChange={(e) => setUsername(e.target.value)}
           value={username}></input>
       </div>
       <div className="search-result">
         {error && <span>User not found</span>}
-        {user && (
-          <div className="search-result-entry" onClick={handleResult}>
-            <img src={user.photoURL} alt=""></img>
-            <span>{user.displayName}</span>
+
+        {user?.map((u, index) =>(
+          <div key={index} className="search-result-entry" onClick={handleResult}>
+            <img src={u.photoURL} alt=""></img>
+            <span>{u.displayName}</span>
           </div>
-        )}
+        ))}
       </div>
     </div>
   )

@@ -45,6 +45,7 @@ const Login = (props) => {
           await setDoc(userRef, {
             uid: user.uid,
             displayName: user.displayName,
+            lowercaseUName: user.displayName.toLowerCase(), 
             email: user.email,
             photoURL: user.photoURL,
             createdAt: new Date(),
