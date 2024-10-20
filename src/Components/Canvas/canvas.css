@@ -12,6 +12,7 @@
     flex-direction: row;
 }
 
+
 /* For tablets and smaller screens */
 @media (max-width: 768px) {
   .canvas {

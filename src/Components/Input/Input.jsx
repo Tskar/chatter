@@ -1,7 +1,3 @@
-import React, { useState } from "react"
-import './input.css'
-import { useAuth } from "../../Context/AuthContext";
-import { useChatAuth } from "../../Context/ChatContext";
 import {
   arrayUnion,
   doc,
@@ -9,8 +5,12 @@ import {
   Timestamp,
   updateDoc,
 } from "firebase/firestore";
+import React, { useState } from "react";
+import { v4 as uuid } from "uuid";
+import { useAuth } from "../../Context/AuthContext";
+import { useChatAuth } from "../../Context/ChatContext";
 import { db } from "../../Firebase/firebase";
-import {v4 as uuid} from "uuid";
+import './input.css';
 
 const Input = (props) => {
 

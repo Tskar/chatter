@@ -7,7 +7,6 @@ import Inbox from "../Inbox/Inbox";
 const Sidebar = ({ select }) => {
   return (
     <div className={` sidebar ${select ? "no-sidebar" : ""}`}>
-      {console.log('sidebar ', select)}
       <Navbar />
       <Search />
       <Inbox />

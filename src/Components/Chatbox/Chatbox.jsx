@@ -1,6 +1,5 @@
 import React, { useEffect } from "react"
 import './chatbox.css'
-import '../../responsive.css';
 import ChatBoard from "../ChatBoard/ChatBoard";
 import Input from "../Input/Input";
 import { useChatAuth } from "../../Context/ChatContext";

@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
+import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 import { AuthContextProvider } from "./Context/AuthContext";
-import { ThemeProvider } from './Context/ThemeContext';
 import { ChatContextProvider } from './Context/ChatContext';
+import { ThemeProvider } from './Context/ThemeContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -1,10 +1,10 @@
 import './App.css';
-import Login from './Login/Login';
 import Canvas from './Components/Canvas/Canvas';
 import { useAuth } from './Context/AuthContext';
-import LoadImg from "./Images/loading-gif.gif"
+import LoadImg from "./Images/loading-gif.gif";
+import Login from './Login/Login';
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const { currentUser } = useAuth();
