@@ -43,12 +43,12 @@ const Search = (props) => {
     e.keyCode === 13 && handleSearch() ;
   }
 
-  const handleResult = async () => {
+  const handleResult = async (u) => {
 
     const combinedId =
-      currentUser.uid > user.uid
-        ? currentUser.uid + user.uid
-        : user.uid + currentUser.uid;
+      currentUser.uid > u.uid
+        ? currentUser.uid + u.uid
+        : u.uid + currentUser.uid;
     try {
       const res = await getDoc(doc(db, "chats", combinedId));
 
@@ -60,15 +60,15 @@ const Search = (props) => {
         //update owners inbox
         await updateDoc(doc(db, "userInbox", currentUser.uid), {
           [combinedId + ".userInfo"]: {
-            uid: user.uid,
-            displayName: user.displayName,
-            photoURL: user.photoURL,
+            uid: u.uid,
+            displayName: u.displayName,
+            photoURL: u.photoURL,
           },
           [combinedId + ".date"]: serverTimestamp(),
         });
 
         //update chat participant's inbox
-        await updateDoc(doc(db, "userInbox", user.uid), {
+        await updateDoc(doc(db, "userInbox", u.uid), {
           [combinedId + ".userInfo"]: {
             uid: currentUser.uid,
             displayName: currentUser.displayName,
@@ -88,16 +88,16 @@ const Search = (props) => {
         <input type="text" 
           className="search-user-field" 
           placeholder="Look up friends.."
-          onKeyDown={handleKey}
-          enterKeyHint="enter"
           onChange={(e) => setUsername(e.target.value)}
+          onKeyDown={handleKey}
+          enterKeyHint="enter"          
           value={username}></input>
       </div>
       <div className="search-result">
         {error && <span>User not found</span>}
 
         {user?.map((u, index) =>(
-          <div key={index} className="search-result-entry" onClick={handleResult}>
+          <div key={index} className="search-result-entry" onClick={() => handleResult(u)}>
             <img src={u.photoURL} alt=""></img>
             <span>{u.displayName}</span>
           </div>
